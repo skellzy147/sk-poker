@@ -1,27 +1,27 @@
-package pokerhands;
+package pokerhands.evaluations;
+
+import static helpers.CardConstants.ACE_HEART;
+import static helpers.CardConstants.ACE_SPADE;
+import static helpers.CardConstants.FOUR_HEART;
+import static helpers.CardConstants.JACK_HEART;
+import static helpers.CardConstants.KING_HEART;
+import static helpers.CardConstants.QUEEN_HEART;
+import static helpers.CardConstants.TEN_HEART;
 
 import data.Card;
 import data.Rank;
 import data.Suit;
-import game.Hand;
+import game.PokerHand;
 import junit.framework.TestCase;
 
 
 public class RoyalFlushEvaluationTest extends TestCase {
 
-    private final Card ACE_HEART = new Card(Rank.ACE, Suit.H);
-    private final Card KING_HEART = new Card(Rank.KING, Suit.H);
-    private final Card QUEEN_HEART = new Card(Rank.QUEEN, Suit.H);
-    private final Card JACK_HEART = new Card(Rank.JACK, Suit.H);
-    private final Card TEN_HEART = new Card(Rank.TEN, Suit.H);
-    private final Card ACE_SPADE = new Card(Rank.ACE, Suit.S);
-    private final Card FOUR_HEART = new Card(Rank.FOUR, Suit.H);
-
-    private RoyalFlushEvaluation classUnderTest;
+    private RoyalFlushEvaluation royalFlushEvaluation;
 
     @Override
     public void setUp() throws Exception {
-        classUnderTest = new RoyalFlushEvaluation();
+        royalFlushEvaluation = new RoyalFlushEvaluation();
     }
 
     public void testSameSuitRoyalFlush() {
@@ -33,12 +33,11 @@ public class RoyalFlushEvaluationTest extends TestCase {
                 TEN_HEART
         };
 
-        Hand hand = new Hand(cards);
+        PokerHand pokerHand = new PokerHand(cards);
 
-        double value = classUnderTest.evaluate(hand);
+        double value = royalFlushEvaluation.evaluate(pokerHand);
 
-
-        assertTrue(value > 0);
+        assertEquals(royalFlushEvaluation.VALUE, value);
     }
 
     public void testDifferentSuitRoyalFlush() {
@@ -50,10 +49,9 @@ public class RoyalFlushEvaluationTest extends TestCase {
                 TEN_HEART
         };
 
-        Hand hand = new Hand(cards);
+        PokerHand pokerHand = new PokerHand(cards);
 
-        double value = classUnderTest.evaluate(hand);
-
+        double value = royalFlushEvaluation.evaluate(pokerHand);
 
         assertEquals(0.0, value);
     }
@@ -67,9 +65,9 @@ public class RoyalFlushEvaluationTest extends TestCase {
                 FOUR_HEART
         };
 
-        Hand hand = new Hand(cards);
+        PokerHand pokerHand = new PokerHand(cards);
 
-        double value = classUnderTest.evaluate(hand);
+        double value = royalFlushEvaluation.evaluate(pokerHand);
 
 
         assertEquals(0.0, value);

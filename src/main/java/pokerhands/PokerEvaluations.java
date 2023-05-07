@@ -1,26 +1,42 @@
 package pokerhands;
 
-import data.Card;
-import game.Hand;
+import game.PokerHand;
+import pokerhands.evaluations.AbstractHandEvaluation;
+import pokerhands.evaluations.FlushEvaluation;
+import pokerhands.evaluations.FourOfAKindEvaluation;
+import pokerhands.evaluations.FullHouseEvaluation;
+import pokerhands.evaluations.OnePairEvaluation;
+import pokerhands.evaluations.RoyalFlushEvaluation;
+import pokerhands.evaluations.StraightEvaluation;
+import pokerhands.evaluations.StraightFlushEvaluation;
+import pokerhands.evaluations.ThreeOfAKindEvaluation;
+import pokerhands.evaluations.TwoPairEvaluation;
 
 public class PokerEvaluations {
 
     private AbstractHandEvaluation[] evaluations;
 
     public PokerEvaluations() {
-        AbstractHandEvaluation[] evaluations = {
-                new RoyalFlushEvaluation()
+        this.evaluations = new AbstractHandEvaluation[]{
+                new RoyalFlushEvaluation(),
+                new StraightFlushEvaluation(),
+                new FourOfAKindEvaluation(),
+                new FullHouseEvaluation(),
+                new FlushEvaluation(),
+                new StraightEvaluation(),
+                new ThreeOfAKindEvaluation(),
+                new TwoPairEvaluation(),
+                new OnePairEvaluation()
         };
-        this.evaluations = evaluations;
     }
 
-    public double evaluateHand(Hand hand) {
+    public double evaluateHand(PokerHand pokerHand) {
         for (AbstractHandEvaluation evaluation : evaluations) {
-            double value = evaluation.evaluate(hand);
+            double value = evaluation.evaluate(pokerHand);
             if (value != 0) {
                 return value;
             }
         }
-        return hand.getCards()[0].getRank().getValue();
+        return pokerHand.getCards()[0].getRank().getValue();
     }
 }

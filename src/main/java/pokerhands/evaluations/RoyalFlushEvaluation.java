@@ -1,17 +1,18 @@
-package pokerhands;
+package pokerhands.evaluations;
 
 import data.Card;
 import data.Rank;
 import data.Suit;
-import game.Hand;
+import game.PokerHand;
+import pokerhands.evaluations.AbstractHandEvaluation;
 
 public class RoyalFlushEvaluation implements AbstractHandEvaluation {
 
-    private final double VALUE = 860;
+    final double VALUE = 1890;
 
     @Override
-    public double evaluate(Hand hand) {
-        Card[] cards = hand.getCards();
+    public double evaluate(PokerHand pokerHand) {
+        Card[] cards = pokerHand.getCards();
         Card first = cards[0];
         if (first.getRank().equals(Rank.ACE)) {
             Suit desiredSuit = first.getSuit();

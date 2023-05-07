@@ -1,4 +1,4 @@
-import game.Hand;
+import game.PokerHand;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
@@ -14,9 +14,12 @@ public class PokerMain {
 //        int choice = Menu.startMenu();
         PokerGame game = new PokerGame();
 //        game.printDeck();
-        Hand playerHand = new Hand(game.dealCards(5));
-        System.out.println("Your Hand: " + playerHand);
-        Hand aiHand = new Hand(game.dealCards(5));
-        System.out.println("Game Hand: " + aiHand);
+        PokerHand playerPokerHand = new PokerHand(game.dealCards(5));
+        System.out.println("Your Hand: " + playerPokerHand);
+        System.out.println("Your Hand Count: \n" + playerPokerHand.debugCounts());
+
+        PokerHand aiPokerHand = new PokerHand(game.dealCards(5));
+        System.out.println("Game Hand: " + aiPokerHand);
+        System.out.println("Game Hand Count: \n" + aiPokerHand.debugCounts());
     }
 }
