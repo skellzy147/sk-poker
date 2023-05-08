@@ -1,25 +1,31 @@
 package pokerhands.evaluations;
 
-import data.Card;
+import data.Rank;
 import game.PokerHand;
-import pokerhands.evaluations.AbstractHandEvaluation;
+
+import java.util.Map;
+import java.util.Objects;
 
 //3 of same rank
-//TODO
 public class ThreeOfAKindEvaluation implements AbstractHandEvaluation {
 
     final double VALUE = 16;
 
     @Override
     public double evaluate(PokerHand pokerHand) {
-        var cards = pokerHand.getCards();
-        if (check(cards)) {
-            return VALUE * cards[0].getRank().getValue();
-        }
-        return 0;
+        var rankMap = pokerHand.getRankMap();
+        double rankValue = check(rankMap);
+        return rankValue > 0 ? rankValue * VALUE : rankValue;
     }
 
-    private boolean check(Card[] cards) {
-        return false;
+    private double check(Map<Rank, Integer> rankIntegerMap) {
+        if (rankIntegerMap.containsValue(3) && !rankIntegerMap.containsValue(2)) {
+            return rankIntegerMap.entrySet()
+                                 .stream()
+                                 .filter(entry -> Objects.equals(entry.getValue(), 3))
+                                 .map(rankIntegerEntry -> rankIntegerEntry.getKey().getValue())
+                                 .findFirst().orElse(0.0);
+        }
+        return 0.0;
     }
 }
