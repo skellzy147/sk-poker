@@ -7,6 +7,7 @@ import data.Suit;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class PokerHand {
 
@@ -56,8 +57,8 @@ public class PokerHand {
     }
 
     private void initRankMap(Card[] cards) {
-        Map<Suit, Integer> initSuitMap = new HashMap<>();
-        Map<Rank, Integer> initRankMap = new HashMap<>();
+        Map<Suit, Integer> initSuitMap = new TreeMap<>();
+        Map<Rank, Integer> initRankMap = new TreeMap<>();
         for (Card card : cards) {
             Rank rank = card.getRank();
             Suit suit = card.getSuit();
