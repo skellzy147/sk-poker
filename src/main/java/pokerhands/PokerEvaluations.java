@@ -1,7 +1,6 @@
 package pokerhands;
 
 import game.PokerHand;
-import org.apache.commons.lang3.tuple.Pair;
 import pokerhands.evaluations.AbstractHandEvaluation;
 import pokerhands.evaluations.FlushEvaluation;
 import pokerhands.evaluations.FourOfAKindEvaluation;
