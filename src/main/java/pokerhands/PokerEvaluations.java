@@ -1,6 +1,7 @@
 package pokerhands;
 
 import game.PokerHand;
+import org.apache.commons.lang3.tuple.Pair;
 import pokerhands.evaluations.AbstractHandEvaluation;
 import pokerhands.evaluations.FlushEvaluation;
 import pokerhands.evaluations.FourOfAKindEvaluation;
@@ -14,7 +15,7 @@ import pokerhands.evaluations.TwoPairEvaluation;
 
 public class PokerEvaluations {
 
-    private AbstractHandEvaluation[] evaluations;
+    private final AbstractHandEvaluation[] evaluations;
 
     public PokerEvaluations() {
         this.evaluations = new AbstractHandEvaluation[]{
@@ -30,13 +31,14 @@ public class PokerEvaluations {
         };
     }
 
-    public double evaluateHand(PokerHand pokerHand) {
+    public HandEvaluation evaluateHand(PokerHand pokerHand) {
         for (AbstractHandEvaluation evaluation : evaluations) {
             double value = evaluation.evaluate(pokerHand);
             if (value != 0) {
-                return value;
+                return new HandEvaluation(value, evaluation.getName());
             }
         }
-        return pokerHand.getCards()[0].getRank().getValue();
+
+        return new HandEvaluation(pokerHand.getCards()[0].getRank().getValue(), "High Card");
     }
 }

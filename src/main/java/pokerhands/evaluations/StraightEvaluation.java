@@ -9,9 +9,13 @@ import java.math.RoundingMode;
 import java.util.Map;
 
 // In order, not same suit
-public class StraightEvaluation implements AbstractHandEvaluation {
+public class StraightEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 36;
+
+    public StraightEvaluation() {
+        super("Straight");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

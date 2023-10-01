@@ -3,6 +3,7 @@ package game;
 import data.Card;
 import data.Rank;
 import data.Suit;
+import pokerhands.HandEvaluation;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -16,6 +17,8 @@ public class PokerHand {
     Map<Rank, Integer> rankMap;
 
     Map<Suit, Integer> suitMap;
+
+    HandEvaluation handEvaluation;
 
     public PokerHand(Card[] cards) {
         Arrays.sort(cards);
@@ -40,6 +43,9 @@ public class PokerHand {
         StringBuilder builder = new StringBuilder();
         for (Card card: this.cards) {
             builder.append(card.toString()).append(" ");
+        }
+        if (handEvaluation != null) {
+            builder.append(this.handEvaluation.getName()).append(" ");
         }
         return builder.toString();
     }
@@ -70,4 +76,13 @@ public class PokerHand {
         this.suitMap = initSuitMap;
         this.rankMap = initRankMap;
     }
+
+    public HandEvaluation getHandEvaluation() {
+        return handEvaluation;
+    }
+
+    public void setHandEvaluation(HandEvaluation handEvaluation) {
+        this.handEvaluation = handEvaluation;
+    }
+
 }

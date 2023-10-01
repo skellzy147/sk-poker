@@ -7,9 +7,13 @@ import java.util.Map;
 import java.util.Objects;
 
 //3 of same rank
-public class ThreeOfAKindEvaluation implements AbstractHandEvaluation {
+public class ThreeOfAKindEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 16;
+
+    public ThreeOfAKindEvaluation() {
+        super("Three Of A Kind");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

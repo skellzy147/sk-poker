@@ -11,10 +11,13 @@ import java.math.RoundingMode;
 import java.util.Map;
 
 // In order, not king, queen, jack etc, all same suit
-//TODO
-public class StraightFlushEvaluation implements AbstractHandEvaluation {
+public class StraightFlushEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 859;
+
+    public StraightFlushEvaluation() {
+        super("Straight Flush");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

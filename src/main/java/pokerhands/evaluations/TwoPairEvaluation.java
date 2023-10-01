@@ -8,9 +8,13 @@ import java.util.Map;
 import java.util.Objects;
 
 // Two Pairs
-public class TwoPairEvaluation implements AbstractHandEvaluation {
+public class TwoPairEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 7;
+
+    public TwoPairEvaluation() {
+        super("Two Pairs");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

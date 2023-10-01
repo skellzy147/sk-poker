@@ -7,9 +7,13 @@ import java.util.Map;
 import java.util.Objects;
 
 // Four of same RANK
-public class FourOfAKindEvaluation implements AbstractHandEvaluation {
+public class FourOfAKindEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 390;
+
+    public FourOfAKindEvaluation() {
+        super("Four Of A Kind");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

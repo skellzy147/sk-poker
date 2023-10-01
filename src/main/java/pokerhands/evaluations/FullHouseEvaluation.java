@@ -7,9 +7,12 @@ import java.util.Map;
 import java.util.Objects;
 
 // One Pair, One Three of a kind
-public class FullHouseEvaluation implements AbstractHandEvaluation {
+public class FullHouseEvaluation extends AbstractHandEvaluation {
     final double VALUE = 177;
 
+    public FullHouseEvaluation() {
+        super("Full House");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

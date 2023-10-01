@@ -3,9 +3,13 @@ package pokerhands.evaluations;
 import game.PokerHand;
 
 // All same suit
-public class FlushEvaluation implements AbstractHandEvaluation {
+public class FlushEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 80;
+
+    public FlushEvaluation() {
+        super("Flush");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

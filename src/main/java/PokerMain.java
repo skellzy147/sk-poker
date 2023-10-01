@@ -1,6 +1,7 @@
 import game.PokerHand;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import pokerhands.PokerHandFactory;
 
 public class PokerMain {
 
@@ -12,14 +13,17 @@ public class PokerMain {
         System.out.println("Welcome to Poker!");
         System.out.println("--------------------------------");
 //        int choice = Menu.startMenu();
+        PokerHandFactory pokerHandFactory = new PokerHandFactory();
         PokerGame game = new PokerGame();
 //        game.printDeck();
-        PokerHand playerPokerHand = new PokerHand(game.dealCards(5));
+        PokerHand playerPokerHand = pokerHandFactory.dealPokerHand(game.dealCards(5));
         System.out.println("Your Hand: " + playerPokerHand);
-        System.out.println("Your Hand Count: \n" + playerPokerHand.debugCounts());
 
-        PokerHand aiPokerHand = new PokerHand(game.dealCards(5));
+        PokerHand aiPokerHand = pokerHandFactory.dealPokerHand(game.dealCards(5));
         System.out.println("Game Hand: " + aiPokerHand);
-        System.out.println("Game Hand Count: \n" + aiPokerHand.debugCounts());
+
+        game.addCardsBackToDeck(playerPokerHand);
+        game.addCardsBackToDeck(aiPokerHand);
+
     }
 }

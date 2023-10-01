@@ -6,9 +6,13 @@ import data.Suit;
 import game.PokerHand;
 import pokerhands.evaluations.AbstractHandEvaluation;
 
-public class RoyalFlushEvaluation implements AbstractHandEvaluation {
+public class RoyalFlushEvaluation extends AbstractHandEvaluation {
 
     final double VALUE = 1890;
+
+    public RoyalFlushEvaluation() {
+        super("Royal Flush");
+    }
 
     @Override
     public double evaluate(PokerHand pokerHand) {

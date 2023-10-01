@@ -2,8 +2,19 @@ package pokerhands.evaluations;
 
 import game.PokerHand;
 
-public interface AbstractHandEvaluation {
+public abstract class AbstractHandEvaluation {
 
-    double evaluate(PokerHand cards);
+    private String name;
+
+    public AbstractHandEvaluation(String name) {
+        this.name = name;
+    }
+
+    public abstract double evaluate(PokerHand cards);
+
+    public String getName() {
+        return this.name;
+    }
+
 
 }

@@ -1,8 +1,10 @@
 import data.Card;
 import data.Rank;
 import data.Suit;
+import game.PokerHand;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class PokerGame {
@@ -44,5 +46,9 @@ public class PokerGame {
             cards[i] = deck.remove(index);;
         }
         return cards;
+    }
+
+    public void addCardsBackToDeck(PokerHand cards) {
+        deck.addAll(Arrays.asList(cards.getCards()));
     }
 }
