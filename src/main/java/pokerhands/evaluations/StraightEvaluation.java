@@ -1,6 +1,7 @@
 package pokerhands.evaluations;
 
 import data.Rank;
+import data.Suit;
 import game.PokerHand;
 
 import java.math.BigDecimal;
@@ -14,14 +15,14 @@ public class StraightEvaluation implements AbstractHandEvaluation {
 
     @Override
     public double evaluate(PokerHand pokerHand) {
-        if (check(pokerHand.getRankMap())) {
+        if (check(pokerHand.getRankMap(), pokerHand.getSuitMap())) {
             return VALUE * pokerHand.getCards()[0].getRank().getValue();
         }
         return 0;
     }
 
-    private boolean check(Map<Rank, Integer> cards) {
-        if (cards.keySet().size() == 5) {
+    private boolean check(Map<Rank, Integer> cards, Map<Suit, Integer> suitMap) {
+        if (cards.keySet().size() == 5 && suitMap.keySet().size() > 1) {
             Rank[] ranks = cards.keySet().toArray(new Rank[0]);
             for (int i = 0; i < 4; i++) {
                 BigDecimal valueDiff = BigDecimal.valueOf(ranks[i].getValue() - ranks[i+1].getValue());
