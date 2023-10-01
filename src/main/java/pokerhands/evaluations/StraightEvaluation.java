@@ -8,7 +8,6 @@ import java.math.RoundingMode;
 import java.util.Map;
 
 // In order, not same suit
-//TODO
 public class StraightEvaluation implements AbstractHandEvaluation {
 
     final double VALUE = 36;
