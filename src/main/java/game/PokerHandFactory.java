@@ -1,7 +1,7 @@
-package pokerhands;
+package game;
 
 import data.Card;
-import game.PokerHand;
+import evaluations.PokerEvaluations;
 
 public class PokerHandFactory {
 
@@ -13,7 +13,7 @@ public class PokerHandFactory {
 
     public PokerHand dealPokerHand(Card[] cards) {
         PokerHand playerPokerHand = new PokerHand(cards);
-        HandEvaluation evaluation = pokerEvaluations.evaluateHand(playerPokerHand);
+        PokerHand.HandEvaluation evaluation = pokerEvaluations.evaluateHand(playerPokerHand);
         playerPokerHand.setHandEvaluation(evaluation);
         return playerPokerHand;
     }

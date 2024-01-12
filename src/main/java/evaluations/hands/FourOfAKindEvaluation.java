@@ -1,4 +1,4 @@
-package pokerhands.evaluations;
+package evaluations.hands;
 
 import data.Rank;
 import game.PokerHand;

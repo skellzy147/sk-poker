@@ -1,4 +1,4 @@
-package pokerhands.evaluations;
+package evaluations.hands;
 
 import static helpers.CardConstants.EIGHT_HEART;
 import static helpers.CardConstants.FOUR_HEART;

@@ -1,7 +1,6 @@
-package pokerhands.evaluations;
+package evaluations.hands;
 
 import static helpers.CardConstants.FOUR_DIAMOND;
-import static helpers.CardConstants.KING_CLUB;
 import static helpers.CardConstants.KING_HEART;
 import static helpers.CardConstants.KING_SPADE;
 import static helpers.CardConstants.THREE_CLUB;

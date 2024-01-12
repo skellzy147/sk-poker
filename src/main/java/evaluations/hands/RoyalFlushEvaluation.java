@@ -1,10 +1,9 @@
-package pokerhands.evaluations;
+package evaluations.hands;
 
 import data.Card;
 import data.Rank;
 import data.Suit;
 import game.PokerHand;
-import pokerhands.evaluations.AbstractHandEvaluation;
 
 public class RoyalFlushEvaluation extends AbstractHandEvaluation {
 

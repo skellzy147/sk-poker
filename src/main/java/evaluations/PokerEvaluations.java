@@ -1,16 +1,16 @@
-package pokerhands;
+package evaluations;
 
 import game.PokerHand;
-import pokerhands.evaluations.AbstractHandEvaluation;
-import pokerhands.evaluations.FlushEvaluation;
-import pokerhands.evaluations.FourOfAKindEvaluation;
-import pokerhands.evaluations.FullHouseEvaluation;
-import pokerhands.evaluations.OnePairEvaluation;
-import pokerhands.evaluations.RoyalFlushEvaluation;
-import pokerhands.evaluations.StraightEvaluation;
-import pokerhands.evaluations.StraightFlushEvaluation;
-import pokerhands.evaluations.ThreeOfAKindEvaluation;
-import pokerhands.evaluations.TwoPairEvaluation;
+import evaluations.hands.AbstractHandEvaluation;
+import evaluations.hands.FlushEvaluation;
+import evaluations.hands.FourOfAKindEvaluation;
+import evaluations.hands.FullHouseEvaluation;
+import evaluations.hands.OnePairEvaluation;
+import evaluations.hands.RoyalFlushEvaluation;
+import evaluations.hands.StraightEvaluation;
+import evaluations.hands.StraightFlushEvaluation;
+import evaluations.hands.ThreeOfAKindEvaluation;
+import evaluations.hands.TwoPairEvaluation;
 
 public class PokerEvaluations {
 
@@ -30,14 +30,14 @@ public class PokerEvaluations {
         };
     }
 
-    public HandEvaluation evaluateHand(PokerHand pokerHand) {
+    public PokerHand.HandEvaluation evaluateHand(PokerHand pokerHand) {
         for (AbstractHandEvaluation evaluation : evaluations) {
             double value = evaluation.evaluate(pokerHand);
             if (value != 0) {
-                return new HandEvaluation(value, evaluation.getName());
+                return new PokerHand.HandEvaluation(value, evaluation.getName());
             }
         }
 
-        return new HandEvaluation(pokerHand.getCards()[0].getRank().getValue(), "High Card");
+        return new PokerHand.HandEvaluation(pokerHand.getCards()[0].getRank().getValue(), "High Card");
     }
 }

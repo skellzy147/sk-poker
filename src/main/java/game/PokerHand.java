@@ -3,10 +3,8 @@ package game;
 import data.Card;
 import data.Rank;
 import data.Suit;
-import pokerhands.HandEvaluation;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -83,6 +81,34 @@ public class PokerHand {
 
     public void setHandEvaluation(HandEvaluation handEvaluation) {
         this.handEvaluation = handEvaluation;
+    }
+
+    public static class HandEvaluation {
+
+        private double value;
+
+        private String name;
+
+        public HandEvaluation(double value, String name) {
+            this.value = value;
+            this.name = name;
+        }
+
+        public double getValue() {
+            return value;
+        }
+
+        public void setValue(double value) {
+            this.value = value;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
 }

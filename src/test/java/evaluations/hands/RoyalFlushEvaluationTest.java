@@ -1,4 +1,4 @@
-package pokerhands.evaluations;
+package evaluations.hands;
 
 import static helpers.CardConstants.ACE_HEART;
 import static helpers.CardConstants.ACE_SPADE;
@@ -9,8 +9,6 @@ import static helpers.CardConstants.QUEEN_HEART;
 import static helpers.CardConstants.TEN_HEART;
 
 import data.Card;
-import data.Rank;
-import data.Suit;
 import game.PokerHand;
 import junit.framework.TestCase;
 
